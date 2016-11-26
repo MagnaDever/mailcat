@@ -1,30 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <script src='http://code.jquery.com/jquery-1.7.1.js'></script>
-
-    <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
-
-    <script>
-        function doIt() {
-            VK.api("friends.get", {fields: "photo_medium"}, function (data) {
-                // Действия с полученными данными
-                for (c = 0; c < data.response.length; c++) {
-                    $("body").append("<img src='" + data.response[c].photo_medium + "'>");
-                }
-            });
-        }
-
-        $(document).ready(function () {
-            VK.init(function () {
-                console.log("Hello!");
-            });
-
-
-            doIt();
-        });
-    </script>
+    <title>Hello World!</title>
+    <script src="http://vk.ru/js/api/xd_connection.js?2"
+            type="text/javascript"></script>
 </head>
-<body style='text-align:center;padding-top:50px;' id='body'>
+<body onload="F()">
+<script type="text/javascript">
+    d = document;
+    function F() {
+        VK.init(function () {
+            VK.api("getProfiles",
+                    {uids: 1},
+                    function (data) {
+                        if (data.error)
+                            alert(data.error.error_msg);
+                        else if (data.response) {
+                            d.getElementById("who").innerHTML =
+                                    data.response[0].last_name + " " +
+                                    data.response[0].first_name;
+                        }
+                    });
+        });
+    }
+</script>
+Hello World, <b id="who">?</b>!
 </body>
 </html>
