@@ -32,54 +32,57 @@
 
     <script src='https://code.jquery.com/jquery-1.7.1.js'></script>
     <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+    <script src="{% static 'js/common.js' %}" type="text/javascript"></script>
+
     <script>
         $(document).ready(function () {
-            VK.init(function () {
-
-            }, function () {
-            }, '5.60');
-        })
-        ;
+            document.getElementById("defaultOpen").click();
+        });
     </script>
+
+
 </head>
 <body id='body'>
-<div id="content">
-    <div class="page_block">
-        <ul class="ui_tabs clear_fix ui_tabs_header">
-            <li>
-                <a href="#" class="ui_tab ui_tab_sel" onclick="return uiTabs.goTab(this, event, 1);">
-                    Отправить сообщение
-                </a>
-            </li>
-            <li>
-                <a href="#" class="ui_tab" onclick="return uiTabs.goTab(this, event, 2);">
-                    Отложенные
-                </a>
-            </li>
-            <li>
-                <a href="#" class="ui_tab" onclick="return uiTabs.goTab(this, event, 3);">
-                    История рассылки
-                </a>
-            </li>
-            <li>
-                <a href="#" class="ui_tab" onclick="return uiTabs.goTab(this, event, 4);">
-                    Статистика
-                </a>
-            </li>
-        </ul>
-        <div>
-            <div class="im-page--chat-body">
-                <div class="im-page--chat-body-wrap _chat_body_wrap">
-                    <div style="width: 594px;"
-                         class="im-page--chat-body-abs _im_chat_body_abs ui_scroll_container ui_scroll_default_theme ui_scroll_hidden">
+<ul class="ui_tabs clear_fix ui_tabs_header">
+    <li>
+        <a href="#" class="ui_tab ui_tab_sel" onclick="changeTab(event,'sender')" id="defaultOpen">
+            Отправить сообщение
+        </a>
+    </li>
+    <li>
+        <a href="#" class="ui_tab" onclick="changeTab(event,'delayed')">
+            Отложенные
+        </a>
+    </li>
+    <li>
+        <a href="#" class="ui_tab" onclick="changeTab(event,'history')">
+            История рассылки
+        </a>
+    </li>
+    <li>
+        <a href="#" class="ui_tab" onclick="changeTab(event,'statistic')">
+            Статистика
+        </a>
+    </li>
+</ul>
 
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
+<div class="tabcontent" id="sender">
+    <h3>Выберите кто получит ваше сообщение:</h3>
+    <div class="">
+        <input class="radiobtn" type="radio" name="users" value="Все" checked><span class="radiobtn_label">Все</span>
+        <input class="radiobtn" type="radio" name="users" value="Участники сообщества"><span class="radiobtn_label">Участники сообщества</span>
+        <input class="radiobtn" type="radio" name="users" value="Не состоят в сообществе"><span class="radiobtn_label">Не состоят в сообществе</span>
     </div>
+    
+</div>
+<div class="tabcontent" id="delayed">
+    <h3>Delayed</h3>
+</div>
+<div class="tabcontent" id="history">
+    <h3>History</h3>
+</div>
+<div class="tabcontent" id="statistic">
+    <h3>Statistic</h3>
 </div>
 
 </body>
