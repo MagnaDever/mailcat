@@ -12,7 +12,7 @@
                     console.log(data.response.length);
                     console.log(data.response);
                     for (c = 0; c < data.response.length; c++) {
-                        $("body").append("<img src='" + data.response[c].photo_medium + "'>");
+                        $("#body").append("<img src='" + data.response[c].photo_medium + "'>");
                     }
                 });
             }, function () {
