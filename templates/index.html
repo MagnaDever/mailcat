@@ -11,7 +11,7 @@
                     console.log("I DO SMTH!")
                     console.log(data.response.count);
                     console.log(data.response);
-                    data.response.forEach(function(item, index, array){
+                    data.response.items.forEach(function(item, index, array){
                         $("#body").append("<img src='" + item.photo_medium + "'>");
                     });
                 });
