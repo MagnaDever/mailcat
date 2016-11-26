@@ -2,4 +2,5 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'index.html', {})
+ #   response.headers.delete('X-Frame-Options')
+    return render(response.headers.delete('X-Frame-Options'), 'index.html', {})
