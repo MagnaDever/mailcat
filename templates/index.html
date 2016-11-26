@@ -6,24 +6,9 @@
     <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
 
     <script>
-        // Функция получения друзей и вывода их на экран
-        function doIt() {
-            /*
-             VK.api('метод', {параметр: "значение"}, callback функция{
-             // работаем с полученными данными
-             });
-             */
-
-            VK.api("friends.get", {fields: "photo_medium"}, function (data) {
-                // Действия с полученными данными
-                for (c = 0; c < data.response.length; c++) {
-                    $("body").append("<img src='" + data.response[c].photo_medium + "'>");
-                }
-            });
-        }
         $(document).ready(function () {
             VK.init(function () {
-                doIt();
+                
             });
         });
     </script>
