@@ -8,11 +8,14 @@
     <script>
         $(document).ready(function () {
             VK.init(function () {
-                // API initialization succeeded
-                // Your code here
+                VK.api("friends.get", {fields: "photo_medium"}, function (data) {
+                    // Действия с полученными данными
+                    for (c = 0; c < data.response.length; c++) {
+                        $("body").append("<img src='" + data.response[c].photo_medium + "'>");
+                    }
+                });
             }, function () {
-                // API initialization failed
-                // Can reload page here
+
             }, '5.60');
         });
     </script>
