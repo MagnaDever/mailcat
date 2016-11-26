@@ -1,26 +1,130 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link type="text/css" href="{% static 'css/apps.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/aes_light.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/audio.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/datepicker.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/feed.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/fonts_cnt.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/friends.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/groups.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/im.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/module.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/mrtarg.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/notifier.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/page.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/page_help.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/photos.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/photoview.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/post.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/privacy.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/profile.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/public.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/tooltips.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/ui_common.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/ui_controls.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/ui_media_selector.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/wk.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/wkview.css' %}" rel="stylesheet">
+
     <script src='https://code.jquery.com/jquery-1.7.1.js'></script>
     <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
-
     <script>
         $(document).ready(function () {
             VK.init(function () {
-                VK.api("friends.get", {fields: "photo_medium"}, function (data) {
-                    console.log("I DO SMTH!")
-                    console.log(data.response.count);
-                    console.log(data.response);
-                    data.response.items.forEach(function(item, index, array){
-                        $("#body").append("<img src='" + item.photo_medium + "'>");
-                    });
-                });
-            }, function () {
 
+            }, function () {
             }, '5.60');
-        });
+        })
+        ;
     </script>
 </head>
-<body style='text-align:center;padding-top:50px;' id='body'>
+<body id='body'>
+<div id="content">
+    <div class="page_block">
+        <ul class="ui_tabs clear_fix ui_tabs_header">
+            <li>
+                <a href="#" class="ui_tab ui_tab_sel" onclick="return uiTabs.goTab(this, event, 1);">
+                    Отправить сообщение
+                </a>
+            </li>
+            <li>
+                <a href="#" class="ui_tab" onclick="return uiTabs.goTab(this, event, 2);">
+                    Отложенные
+                </a>
+            </li>
+            <li>
+                <a href="#" class="ui_tab" onclick="return uiTabs.goTab(this, event, 3);">
+                    История рассылки
+                </a>
+            </li>
+            <li>
+                <a href="#" class="ui_tab" onclick="return uiTabs.goTab(this, event, 4);">
+                    Статистика
+                </a>
+            </li>
+        </ul>
+        <div>
+            <div class="im-page--chat-body">
+                <div class="im-page--chat-body-wrap _chat_body_wrap">
+                    <div style="width: 594px;"
+                         class="im-page--chat-body-abs _im_chat_body_abs ui_scroll_container ui_scroll_default_theme ui_scroll_hidden">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="im-chat-input clear_fix  _im_chat_input_parent">
+                <div class="im-chat-input--textarea fl_l _im_text_input _emoji_field_wrap _voice_field_wrap">
+                    <div class="im-chat-input--txt-wrap _im_text_wrap">
+                        <div class="im-chat-input--attach">
+                            <input aria-label="Прикрепить фото" tabindex="0" id="im_full_upload"
+                                   class="im-chat-input--attach-file" type="file" size="28" multiple="true"
+                                   accept="image/jpeg,image/png,image/gif" style="cursor: pointer;" name="photo">
+                            <label onmouseover="showTooltip(this, { text: 'Прикрепить фото', black: true, shift: [8, 10] });"
+                                   for="im_full_upload" class="im-chat-input--attach-label"></label>
+                        </div>
+                        <div class="emoji_smile_wrap im-chat-input--smile-wrap _emoji_wrap">
+                            <div class="emoji_smile _emoji_btn" title="Используйте TAB, чтобы быстрее открывать смайлы"
+                                 onmouseover="return Emoji.show(this, event);"
+                                 onmouseout="return Emoji.hide(this, event);"
+                                 onclick="return cancelEvent(event);">
+                                <div class="emoji_smile_icon_vector emoji_smile_icon"></div>
+                            </div>
+                        </div>
+                        <div class="_im_media_selector im-chat-input--selector">
+                            <div class="media_selector clear_fix">
+                                <div class="ms_items_more_wrap ms_items_more_wrap_vector to_up">
+                                    <a class="ms_item_more" tabindex="0" role="button">
+                                            <span class="ms_item_more_label">
+                                                <span class="blind_label">Ещё</span>
+                                            </span>
+                                    </a>
+                                    <div class="ms_items_more_helper">
+                                        <div class="ms_items_more _more_items">
+                                            <a class="ms_item ms_item_photo _type_photo" tabindex="0">"Фотография"</a>
+                                            <a class="ms_item ms_item_video _type_video" tabindex="0">"Видеозапись"</a>
+                                            <a class="ms_item ms_item_audio _type_audio" tabindex="0">"Фотография"</a>
+                                            <a class="ms_item ms_item_doc _type_doc" tabindex="0"
+                                               style="display: block">"Документ"</a>
+                                            <a class="ms_item ms_item_gift _type_gift" tabindex="0">"Подарок"</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
