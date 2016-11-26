@@ -9,9 +9,9 @@
             VK.init(function () {
                 VK.api("friends.get", {fields: "photo_medium"}, function (data) {
                     console.log("I DO SMTH!")
-                    console.log(data.response.length);
+                    console.log(data.response.count);
                     console.log(data.response);
-                    for (c = 0; c < data.response.length; c++) {
+                    for (c = 0; c < data.response.count; c++) {
                         $("#body").append("<img src='" + data.response[c].photo_medium + "'>");
                     }
                 });
